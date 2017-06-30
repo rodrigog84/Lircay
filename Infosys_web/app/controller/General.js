@@ -1123,7 +1123,7 @@ Ext.define('Infosys_web.controller.General', {
         var me = this
 
         form.submit({
-            url: '/Infosys_web/core/index.php/login/ingreso',
+            url: '/Lircay/core/index.php/login/ingreso',
             success: function(s, o) {
                 var objs = Ext.JSON.decode(o.response.responseText);
 

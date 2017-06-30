@@ -23,6 +23,10 @@ Ext.define('Infosys_web.controller.Facturacion', {
              'clientes.BuscarClientes','productos.BuscarProductos',
              'ventas.Principalfactura',
              'ventas.BuscarSucursales',
+             'ventas.ResumenVentas',
+             'ventas.EstadisticasVentas',
+             'ventas.InformeStock',
+             'ventas.VerDetalleProductoStock',                          
              'ventas.Exportar',
              'ventas.Observaciones',
              'ventas.Facturaseditar'],
@@ -87,6 +91,38 @@ Ext.define('Infosys_web.controller.Facturacion', {
             'topmenus menuitem[action=mejemplo]': {
                 click: this.mejemplo
             },
+
+            'topmenus menuitem[action=resumenventas]': {
+                click: this.resumenventas
+            },
+
+            'topmenus menuitem[action=estadisticasventas]': {
+                click: this.estadisticasventas
+            },
+
+            'topmenus menuitem[action=informestock]': {
+                click: this.informestock
+            },
+
+            'resumenventas button[action=cerrarfactura]': {
+                click: this.cerrarfactura
+            },
+
+            'informestock button[action=cerrarfactura]': {
+                click: this.cerrarfactura
+            },
+
+
+            'estadisticasventas button[action=cerrarfactura]': {
+                click: this.cerrarfactura
+            },
+
+
+            'informestock': {
+                verDetalleProductoStock: this.verDetalleProductoStock
+            },               
+
+
             'facturasingresar button[action=buscarclientes]': {
                 click: this.buscarclientes
             },
@@ -1299,6 +1335,39 @@ Ext.define('Infosys_web.controller.Facturacion', {
                                 documento: tipo}
         st.load();
     },
+
+
+resumenventas: function(){
+//
+        var viewport = this.getPanelprincipal();
+        viewport.removeAll();
+        viewport.add({xtype: 'resumenventas'});
+        
+    },  
+    
+    informestock: function(){
+//
+        var viewport = this.getPanelprincipal();
+        viewport.removeAll();
+        viewport.add({xtype: 'informestock'});
+        
+    },  
+
+
+
+    estadisticasventas: function(){
+//
+        var viewport = this.getPanelprincipal();
+        viewport.removeAll();
+        viewport.add({xtype: 'estadisticasventas'});
+        
+    },  
+
+    verDetalleProductoStock: function(r){
+          Ext.create('Infosys_web.view.ventas.VerDetalleProductoStock', {id_producto: r.data.id});            
+
+    },        
+          
   
 });
 

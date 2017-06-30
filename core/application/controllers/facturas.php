@@ -9,6 +9,20 @@ class Facturas extends CI_Controller {
 		$this->load->database();
 	}
 
+
+	public function get_annos(){
+		$anno = date("Y");
+		$array_annos = array();
+		$anno_inic = $anno - 15;
+		while($anno_inic <= $anno){
+			array_push($array_annos,array('anno' => $anno));
+			//$array_annos[$anno_inic] = $anno_inic;
+			$anno--;
+		}
+		echo json_encode($array_annos);
+	}	
+	
+
 	public function update(){
 
 		$resp = array();
